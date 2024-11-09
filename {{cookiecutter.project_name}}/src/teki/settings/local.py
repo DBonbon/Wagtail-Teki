@@ -1,7 +1,7 @@
 """
 Write local settings here, or override base settings
 """
-from pipit.settings.base import *  # NOQA
+from teki.settings.base import *  # NOQA
 
 
 VS_CODE_REMOTE_DEBUG = get_env_bool("VS_CODE_REMOTE_DEBUG", default=False)
@@ -29,7 +29,7 @@ if get_env_bool("DEBUG_TOOLBAR", default=False):
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
     DEBUG_TOOLBAR_CONFIG = {
-        "SHOW_TOOLBAR_CALLBACK": "pipit.settings.local.show_toolbar"
+        "SHOW_TOOLBAR_CALLBACK": "teki.settings.local.show_toolbar"
     }
 
 

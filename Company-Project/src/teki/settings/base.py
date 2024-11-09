@@ -8,7 +8,7 @@ from utils.env import get_env, get_env_bool  # NOQA: F401
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Version, be sure to bump this with each release (please follow semver.org)
-APP_VERSION = "{{cookiecutter.version}}"
+APP_VERSION = "0.1.0"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env("SECRET_KEY", required=True)
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "wagtail_headless_preview",
     "rest_framework",
     # Project specific apps
-    "pipit",
+    "teki",
     "sitesettings",
     "customuser",
     "customimage",
@@ -71,7 +71,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "pipit.urls"
+ROOT_URLCONF = "teki.urls"
 APPEND_SLASH = True
 
 TEMPLATES = [
@@ -95,13 +95,13 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
                 # Project specific
-                "pipit.context_processors.settings_context_processor",
+                "teki.context_processors.settings_context_processor",
             ],
         },
     }
 ]
 
-WSGI_APPLICATION = "pipit.wsgi.application"
+WSGI_APPLICATION = "teki.wsgi.application"
 
 
 # Database
@@ -199,7 +199,7 @@ ADMIN_URL = "wt/admin/"
 # NextJS
 WAGTAIL_HEADLESS_PREVIEW = {
     "CLIENT_URLS": {
-        "default": "/api/{{ 'draft' if cookiecutter.experimental_use_app_router == 'True' else 'preview' }}/",
+        "default": "/api/preview/",
     }
 }
 

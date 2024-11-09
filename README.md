@@ -1,7 +1,7 @@
-[![Test cookiecutter scaffolder](https://github.com/Frojd/Wagtail-Pipit/actions/workflows/main.yml/badge.svg)](https://github.com/Frojd/Wagtail-Pipit/actions/workflows/main.yml)
+[![Test cookiecutter scaffolder](https://github.com/Frojd/Wagtail-Teki/actions/workflows/main.yml/badge.svg)](https://github.com/Frojd/Wagtail-teki/actions/workflows/main.yml)
 
-# Pipit
-Pipit is a [Wagtail CMS](https://wagtail.io/) boilerplate which aims to provide an easy and modern developer workflow with a React-rendered frontend.
+# Teki
+Teki is a [Wagtail CMS](https://wagtail.io/) boilerplate which aims to provide an easy and modern developer workflow with a React-rendered frontend.
 
 ## Features
 - Hybrid static and server rendered React using [Next.js](https://nextjs.org/)
@@ -20,7 +20,7 @@ Pipit is a [Wagtail CMS](https://wagtail.io/) boilerplate which aims to provide 
 1. Make sure you have [cookiecutter](https://github.com/audreyr/cookiecutter/blob/master/docs/index.rst) installed. If not run `pip install cookiecutter` (or via brew)
 2. Run cookiecutter:
 ```
-cookiecutter https://github.com/Frojd/Wagtail-Pipit.git
+cookiecutter https://github.com/Dbonbon/Wagtail-Teki.git
 ```
 
 3. Fill in the questions and you are done!
@@ -48,12 +48,12 @@ We recommend you to start by checking out the [Getting Started Guide](/docs/gett
 ## Contribute
 If you have ideas for improvement, please share your thoughts through an issue. We also welcome PR's
 
-- Issue Tracker: [https://github.com/Frojd/Wagtail-Pipit/issues](https://github.com/Frojd/Wagtail-Pipit/issues)
-- Source Code: [https://github.com/Frojd/Wagtail-Pipit](https://github.com/Frojd/Wagtail-Pipit)
-- Discussions: You can find us on the [Wagtail slack](https://wagtail.io/slack/) under the channel `#pipit`
+- Issue Tracker: [https://github.com/Frojd/Wagtail-Teki/issues](https://github.com/Frojd/Wagtail-teki/issues)
+- Source Code: [https://github.com/Dbonbon/Wagtail-Teki](https://github.com/Frojd/Wagtail-teki)
+- Discussions: You can find us on the [Wagtail slack](https://wagtail.io/slack/) under the channel `#teki`
 
 ## Security
-If you believe you have found a security issue with any of our projects please email us at [security@frojd.se](security@frojd.se).
+If you believe you have found a security issue with any of our projects please email us at [security@teki.ch](security@teki.ch).
 
 ## Support
 If you have any issues, please submit an issue and we will do our best to help you out.

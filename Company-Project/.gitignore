@@ -46,8 +46,8 @@ src/.env.local
 # Static folder
 src/static
 src/media
-src/pipit/static/pipit/**
-!src/pipit/static/pipit/admin-overrides.css
+src/teki/static/teki/**
+!src/teki/static/teki/admin-overrides.css
 
 # Pytest
 .cache

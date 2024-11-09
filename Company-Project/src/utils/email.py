@@ -17,7 +17,7 @@ def send_templated_email(
 
     send_templated_email(
         subject='Welcome to our newsletter',
-        from_email='no-reply@frojd.se',
+        from_email='no-reply@teki.ch',
         to_emails=[receiver_user.email],
         template_txt="email/welcome_email.txt",
         template_html="email/welcome_email.html",

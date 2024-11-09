@@ -13,6 +13,6 @@ from utils.env import if_exists_load_env
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pipit.settings.prod")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "teki.settings.prod")
 if_exists_load_env(".env")
 application = get_wsgi_application()

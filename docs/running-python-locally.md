@@ -23,7 +23,7 @@ touch src/.env.local
 And supply your env configuration, you can usually just copy paste the values you would have from `/docker/config/python.env` and only replace `DATABASE_HOST`.
 
 ```
-DJANGO_SETTINGS_MODULE=pipit.settings.local
+DJANGO_SETTINGS_MODULE=teki.settings.local
 ALLOWED_HOSTS=*
 INTERNAL_IPS=0.0.0.0
 SECRET_KEY=generatesecretkeyhere

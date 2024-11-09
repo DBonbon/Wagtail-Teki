@@ -1,6 +1,6 @@
 # Scaffolding
 
-In Pipit we include a couple of commands to make it easier for you to create the neccessary Wagtail pages and frontend components.
+In teki we include a couple of commands to make it easier for you to create the neccessary Wagtail pages and frontend components.
 
 
 ## Creating a Wagtail page

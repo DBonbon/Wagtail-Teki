@@ -9,7 +9,7 @@ In this tutorial we'll explain how to successfully set up a Continious Integrati
 - An understanding of what [Ansible](https://www.ansible.com/overview/how-ansible-works) is
 - An understanding of what a [Ansible Playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) is
 - An understanding of what [Public Key Authentication](https://www.ssh.com/ssh/public-key-authentication) are
-- A fully generated Pipit project
+- A fully generated teki project
 - Access to two separate environments for stage and production
 - You have performed application provisioning on both your stage and production environments by running the ansible playbook `provision.yml`
 - A Circle CI account
@@ -17,7 +17,7 @@ In this tutorial we'll explain how to successfully set up a Continious Integrati
 ## Guide
 
 - Start by generating a new ssh-key (without a passphrase) for your stage environment
-- Run: `ssh-keygen -t ed25519 -C "ci@frojd.se"`
+- Run: `ssh-keygen -t ed25519 -C "ci@teki.ch"`
 - When the "Enter file in which to save the key" prompt pops up, select a name for your key. I recommend naming it after the environment you wish to connect, such as `stage.example.com`, to makes it easier to identify which key belong where.
 - On the next prompt ("Enter passphrase"), press Enter
 - On the next prompt ("Enter passphrase again"), press Enter

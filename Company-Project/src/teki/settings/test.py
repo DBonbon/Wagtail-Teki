@@ -4,7 +4,7 @@ Write test settings here (for ci environment), or override base settings
 import logging
 from typing import Any, Dict
 
-from pipit.settings.base import *  # NOQA
+from teki.settings.base import *  # NOQA
 
 DEBUG = False
 
@@ -33,4 +33,4 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # type: ignore[index]
 
 LOGGING: Dict[str, Any] = {}
 
-TEST_RUNNER = "pipit.test_runner.PytestTestRunner"
+TEST_RUNNER = "teki.test_runner.PytestTestRunner"

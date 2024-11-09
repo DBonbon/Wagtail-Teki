@@ -35,20 +35,20 @@ The project backend, based on Wagtail and the CMS Wagtail is located in `/src`, 
 │   └── views                   # Put your Django and DRF views here
 ├── manage.py                   # Django admin tool with addons for loading .env files
 ├── nextjs                      # Enables communication between Next.js and Wagtail
-├── pipit                       # This is a bootstrap app that contains settings, translations and routing
+├── teki                       # This is a bootstrap app that contains settings, translations and routing
 │   ├── context_processors.py   # Provides templates with values
 │   ├── locale                  # Translation files
-│   ├── management              # Contains Pipit specific management commands
+│   ├── management              # Contains teki specific management commands
 │   ├── settings                # Contains all app settings
 │   │   ├── base.py             # Put all your mandatory configuration here
 │   │   ├── local.py            # Put your local configuration here
 │   │   ├── prod.py             # Put your production configuration here
 │   │   ├── stage.py            # Put your stage configuration here
 │   │   └── test.py             # Put your test configuration here
-│   ├── templates               # Contains Pipit specific templates (like the page scaffolder)
+│   ├── templates               # Contains teki specific templates (like the page scaffolder)
 │   ├── test_runner.py          # Lets us use pytest as default test runner
 │   ├── urls.py                 # The entrypoint for all routing
-│   ├── wagtail_hooks.py        # Contains pipit specific Wagtail overrides
+│   ├── wagtail_hooks.py        # Contains teki specific Wagtail overrides
 │   └── wsgi.py                 # Default Django wsgi configuration
 ├── pytest.circleci.ini         # Custom Pytest configuration for Circle CI
 ├── pytest.ini                  # Pytest configuration

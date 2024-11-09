@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug pipit (only when open in container)",
+            "name": "Debug teki (only when open in container)",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/manage.py",

@@ -1,4 +1,4 @@
-# Handling CSRF Tokens in Pipit
+# Handling CSRF Tokens in Teki
 
 There are several ways of working with CSRF tokens, you can either:
 - Set a cookie containing the CSRF on your backend and then pick it up on the clientside using js
