@@ -18,7 +18,7 @@ jobs:
 
       # Sync changes from Company-Project to cookiecutter
       - name: Sync changes from Company-Project to cookiecutter
-        run: ./sync.sh
+        run: .github/workflows/sync.sh
 
       # Continue with testing steps
       - uses: "actions/setup-python@v5"
