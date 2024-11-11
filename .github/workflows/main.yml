@@ -1,5 +1,7 @@
 name: Test cookiecutter scaffolder
+
 on: [push, pull_request]
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -10,9 +12,15 @@ jobs:
           {name: "Page router", value: "False"},
           {name: "App router", value: "True"},
         ]
-    name: Test ${{ matrix.experimental_use_app_router.name }}
+
     steps:
       - uses: actions/checkout@v4
+
+      # Sync changes from Company-Project to cookiecutter
+      - name: Sync changes from Company-Project to cookiecutter
+        run: ./sync.sh
+
+      # Continue with testing steps
       - uses: "actions/setup-python@v5"
         with:
           python-version: "3.11"
