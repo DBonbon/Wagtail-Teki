@@ -1,78 +1,47 @@
-name: Test cookiecutter scaffolder
+name: Sync Company-Project to {{cookiecutter.project_name}}
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'Company-Project/**'
 
 jobs:
-  test:
+  sync:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        experimental_use_app_router: [
-          {name: "Page router", value: "False"},
-          {name: "App router", value: "True"},
-        ]
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install jq
+      - name: Install jq (for JSON parsing in sync script)
         run: sudo apt-get install -y jq
 
-      # Set up Docker Compose
-      - name: Set up Docker Compose
-        run: |
-          LATEST_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')
-          sudo curl -L "https://github.com/docker/compose/releases/download/$LATEST_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
-          docker-compose --version
-        shell: bash
-
-      # Sync changes from Company-Project to cookiecutter
+      # Run the sync script
       - name: Make sync.sh executable
         run: chmod +x .github/workflows/sync.sh
 
-      - name: Sync changes from Company-Project to cookiecutter
+      - name: Run sync script
         run: .github/workflows/sync.sh
 
-      # Continue with testing steps
-      - uses: "actions/setup-python@v5"
+      # Configure git user details for commits
+      - name: Set up git for committing changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      # Create and push changes to a new branch if branch protections apply
+      - name: Push changes to a new branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git checkout -b sync-changes
+          git add {{cookiecutter.project_name}}/
+          git commit -m "Sync updates from Company-Project to {{cookiecutter.project_name}}"
+          git push origin sync-changes
+
+      # Create a pull request
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
         with:
-          python-version: "3.11"
-      - name: Install cookiecutter
-        run: |
-          python -m pip install --upgrade pip
-          pip install cookiecutter
-      - name: Cleanup
-        run: |
-          set -x
-          rm -rf Company-Project
-      - name: Run cookiecutter
-        run: |
-          cookiecutter . --no-input experimental_use_app_router=${{ matrix.experimental_use_app_router.value }}
-      - name: Create docker-compose config for running boilerplate tests
-        run: |
-          cp docker-compose-ci.yml Company-Project/docker-compose-ci.yml
-      - name: Build image
-        run: |
-          cd Company-Project
-          chmod +x src/docker-entrypoint.sh
-          docker-compose -f docker-compose-ci.yml build
-      - name: Verify backend scaffolder
-        run: |
-          cd Company-Project
-          set -x
-          docker-compose -f docker-compose-ci.yml run --rm python python manage.py new_page --name=Article
-      - name: Run tests on container
-        run: |
-          cd Company-Project
-          docker-compose -f docker-compose-ci.yml run --rm python test
-          docker-compose -f docker-compose-ci.yml run --rm python typecheck
-          docker-compose -f docker-compose-ci.yml run --rm python lint
-      - name: Run frontend tests
-        run: |
-          cd Company-Project/frontend
-          npm ci
-          npm run test:ci
-          IGNORE_SENTRY=1 npm run build
-          npm run build-storybook
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: sync-changes
+          title: "Sync updates from Company-Project to {{cookiecutter.project_name}}"
+          body: "This PR syncs changes from Company-Project to {{cookiecutter.project_name}}."
