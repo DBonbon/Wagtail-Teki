@@ -16,6 +16,8 @@ services:
     environment:
       - PYTHON_HOST=http://python
       - MEDIA_REMOTE_DOMAIN=example.com
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   python:
     image: dbonbon/company_project_python

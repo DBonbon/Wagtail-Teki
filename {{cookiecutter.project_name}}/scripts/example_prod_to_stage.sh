@@ -10,9 +10,9 @@
 
 set -e
 
-readonly STAGE_HOST=deploy@{{ cookiecutter.ssh_host_stage }}
-readonly PROD_HOST=deploy@{{ cookiecutter.ssh_host_prod }}
-readonly REMOTE_MEDIA_PATH=/mnt/persist/www/{{ cookiecutter.project_slug }}/shared/media
+readonly STAGE_HOST=deploy@stage.example.com
+readonly PROD_HOST=deploy@example.com
+readonly REMOTE_MEDIA_PATH=/mnt/persist/www/company_project/shared/media
 
 scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 
@@ -24,7 +24,7 @@ then
 fi
 
 echo "Creating database dump from prod..."
-ssh $PROD_HOST "pg_dump -h localhost -Fc -f /tmp/db-dump.sql -U postgres {{ cookiecutter.db_name_prod }} -x -O"
+ssh $PROD_HOST "pg_dump -h localhost -Fc -f /tmp/db-dump.sql -U postgres company_project -x -O"
 
 echo "Downloading database dump..."
 scp $PROD_HOST:/tmp/db-dump.sql /tmp/db-dump.sql
@@ -34,15 +34,15 @@ echo "Uploading database to new server"
 scp /tmp/db-dump.sql $STAGE_HOST:/tmp/db-dump.sql
 
 echo "Replacing stage db"
-ssh $STAGE_HOST "sudo -u postgres pg_restore --clean -h localhost -d {{ cookiecutter.db_name_stage }} -U postgres '/tmp/db-dump.sql'"
+ssh $STAGE_HOST "sudo -u postgres pg_restore --clean -h localhost -d company_project -U postgres '/tmp/db-dump.sql'"
 ssh $STAGE_HOST "rm /tmp/db-dump.sql"
 
 rm /tmp/db-dump.sql
 
 echo "Updating database..."
-manage_prefix="source /mnt/persist/www/{{ cookiecutter.project_slug }}/shared/venv/bin/activate && cd /mnt/persist/www/{{ cookiecutter.project_slug }}/current/src &&"
+manage_prefix="source /mnt/persist/www/company_project/shared/venv/bin/activate && cd /mnt/persist/www/company_project/current/src &&"
 
-ssh $STAGE_HOST "$manage_prefix python manage.py change_site_domain --site_id=1 --new_site_domain='{{ cookiecutter.domain_stage }}'"
+ssh $STAGE_HOST "$manage_prefix python manage.py change_site_domain --site_id=1 --new_site_domain='stage.example.com'"
 
 echo "Syncing media..."
 src_dir=${scripts_dir}/../src

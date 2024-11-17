@@ -4,15 +4,15 @@
 set -e
 
 readonly DB_WAIT_TIME=20  # Arbitrary timeout value for making sure the db is ready
-readonly LOCAL_DOMAIN={{ cookiecutter.domain_prod }}.test:{{ cookiecutter.docker_web_port }}
-readonly SSH_HOST=deploy@{{ cookiecutter.ssh_host_prod }}
-readonly REMOTE_MEDIA_PATH=/mnt/persist/www/{{ cookiecutter.project_slug }}/shared/media
+readonly LOCAL_DOMAIN=example.com.test:8081
+readonly SSH_HOST=deploy@example.com
+readonly REMOTE_MEDIA_PATH=/mnt/persist/www/company_project/shared/media
 
 scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 docker_dir=${scripts_dir}/../docker
 
 echo "Creating database dump from prod..."
-ssh $SSH_HOST "export PGUSER=postgres && pg_dump {{ cookiecutter.db_name_prod }} --no-owner > /tmp/db-dump.sql"
+ssh $SSH_HOST "export PGUSER=postgres && pg_dump company_project --no-owner > /tmp/db-dump.sql"
 
 echo "Downloading database dump..."
 scp $SSH_HOST:/tmp/db-dump.sql $docker_dir/files/db-dumps/db-dump.sql

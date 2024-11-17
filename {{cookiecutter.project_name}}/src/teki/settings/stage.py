@@ -74,7 +74,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # Email notification url
-WAGTAILADMIN_BASE_URL = "https://{{cookiecutter.domain_stage}}"
+WAGTAILADMIN_BASE_URL = "https://stage.example.com"
 
 # Sentry
 SENTRY_DSN = get_env("SENTRY_DSN", required=True)

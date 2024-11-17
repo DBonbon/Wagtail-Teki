@@ -1,4 +1,4 @@
-{% raw %}from wagtail.test.utils import WagtailPageTests
+from wagtail.test.utils import WagtailPageTests
 from wagtail_factories import SiteFactory
 
 from ..factories.base_page import BasePageFactory
@@ -22,4 +22,4 @@ class {{ name }}PageTest(WagtailPageTests):
 
         self.assertTrue("component_props" in data)
         self.assertTrue("title" in data["component_props"])
-        self.assertEqual("{{ name }}", data["component_props"]["title"]){% endraw %}
+        self.assertEqual("{{ name }}", data["component_props"]["title"])

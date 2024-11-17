@@ -8,7 +8,7 @@ from utils.env import get_env, get_env_bool  # NOQA: F401
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Version, be sure to bump this with each release (please follow semver.org)
-APP_VERSION = "{{cookiecutter.version}}"
+APP_VERSION = "0.1.0"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env("SECRET_KEY", required=True)
@@ -140,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 TIME_ZONE = "Europe/Stockholm"
-LANGUAGE_CODE = "sv-se"
+LANGUAGE_CODE = "en-us"
 SITE_ID = 1
 USE_I18N = True
 USE_TZ = True
@@ -199,7 +199,7 @@ ADMIN_URL = "wt/admin/"
 # NextJS
 WAGTAIL_HEADLESS_PREVIEW = {
     "CLIENT_URLS": {
-        "default": "/api/{{ 'draft' if cookiecutter.experimental_use_app_router == 'True' else 'preview' }}/",
+        "default": "/api/preview/",
     }
 }
 
