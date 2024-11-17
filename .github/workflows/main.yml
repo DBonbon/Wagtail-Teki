@@ -37,6 +37,17 @@ jobs:
           git commit -m "Sync updates from Company-Project to {{cookiecutter.project_name}}"
           git push origin sync-changes
 
+      - name: Check if changes were pushed
+        id: check_changes
+        run: |
+          git fetch origin
+          CHANGES=$(git diff --name-only origin/main..HEAD)
+          if [[ -z "$CHANGES" ]]; then
+            echo "No changes to push. Exiting..."
+            exit 0
+          fi
+        shell: bash
+
       # Create a pull request
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
