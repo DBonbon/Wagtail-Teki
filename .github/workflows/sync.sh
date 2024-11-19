@@ -1,26 +1,49 @@
-#!/bin/bash
-# sync.sh
-# Syncs changes from Company-Project to {{cookiecutter.project_name}} with cookiecutter variable handling
+name: Sync Company-Project to {{cookiecutter.project_name}}
 
-echo "Starting sync process..."
-pwd
+on:
+  workflow_call:
 
-SOURCE="Company-Project/"
-DEST="{{cookiecutter.project_name}}/"
-COOKIECUTTER_JSON="cookiecutter.json"
-EXCLUDE_PATTERNS=()
+jobs:
+  sync:
+    runs-on: ubuntu-latest
 
-# Read cookiecutter.json and exclude relevant paths
-for key in $(jq -r 'keys_unsorted[]' "$COOKIECUTTER_JSON"); do
-    value=$(jq -r ".${key}" "$COOKIECUTTER_JSON")
-    EXCLUDE_PATTERNS+=("--exclude=*$value*")
-done
+    steps:
+      - uses: actions/checkout@v4
 
-# Run rsync with specified exclusions
-RSYNC_CMD="rsync -ac --filter='merge Company-Project/.rsync-filter' ${EXCLUDE_PATTERNS[@]} $SOURCE $DEST"
-echo "Executing: $RSYNC_CMD"
-eval "$RSYNC_CMD"
+      - name: Install jq (for JSON parsing)
+        run: sudo apt-get install -y jq
 
-# Log recently modified files to verify sync
-echo "Files recently modified in {{cookiecutter.project_name}}:"
-find "$DEST" -type f -printf '%T+ %p\n' | sort -r | head -20
+      - name: Make sync.sh executable
+        run: chmod +x .github/workflows/sync.sh
+
+      - name: Run sync script
+        run: .github/workflows/sync.sh
+
+      - name: Set up git for committing changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Push changes to a new branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="sync-changes-$(date +'%Y%m%d%H%M%S')"
+          git checkout -b "$BRANCH_NAME"
+          # Stage all changes, including the .github directory
+          git add {{cookiecutter.project_name}}/ .github/
+          # Commit the changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Sync updates from Company-Project to {{cookiecutter.project_name}}"
+          git push origin "$BRANCH_NAME"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: $BRANCH_NAME
+          title: "Sync updates from Company-Project to {{cookiecutter.project_name}}"
+          body: "This PR syncs changes from Company-Project to {{cookiecutter.project_name}}."
