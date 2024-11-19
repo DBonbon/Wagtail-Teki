@@ -1,0 +1,13 @@
+- /frontend/.next/
+- /frontend/node_modules/
+- /src/static/django_extensions/
+- /src/static/wagtail_localize/
+- /deploy/keys/  # If any private keys exist in deploy directories
+
+# Exclude Python compiled files and cache
+- /src/**/__pycache__/
+- /src/**/*.pyc
+
+# Exclude sensitive files (if any)
+- /.env
+- /.env.local
