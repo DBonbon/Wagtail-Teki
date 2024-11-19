@@ -30,7 +30,13 @@ jobs:
         run: |
           BRANCH_NAME="sync-changes-$(date +'%Y%m%d%H%M%S')"
           git checkout -b "$BRANCH_NAME"
-          git add {{cookiecutter.project_name}}/
+          # Stage all changes, including the .github directory
+          git add {{cookiecutter.project_name}}/ .github/workflows/sync.sh
+          # Commit the changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
           git commit -m "Sync updates from Company-Project to {{cookiecutter.project_name}}"
           git push origin "$BRANCH_NAME"
 
