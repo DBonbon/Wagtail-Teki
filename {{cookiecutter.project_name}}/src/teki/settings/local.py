@@ -12,7 +12,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Email notification url
 WAGTAILADMIN_BASE_URL = (
-    "https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_port}}"
+    "https://example.com.test:8081"
 )
 
 # Allow weak local passwords

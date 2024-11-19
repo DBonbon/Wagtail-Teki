@@ -1,4 +1,4 @@
-{% raw %}from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from wagtail.models import PageManager
 from wagtail_headless_preview.models import HeadlessPreviewMixin
 
@@ -12,4 +12,4 @@ class {{ name }}Page(HeadlessPreviewMixin, BasePage):
     objects: PageManager
 
     class Meta:
-        verbose_name = _("{{ name }}"){% endraw %}
+        verbose_name = _("{{ name }}")

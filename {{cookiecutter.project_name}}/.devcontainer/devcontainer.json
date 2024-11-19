@@ -1,5 +1,5 @@
 {
-	"name": "{{cookiecutter.project_name}}",
+	"name": "Company-Project",
 	"dockerComposeFile": [
 		"../docker-compose.yml",
 		"docker-compose.extend.yml"

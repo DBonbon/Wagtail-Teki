@@ -1,4 +1,4 @@
-# {{cookiecutter.project_name}}
+# Company-Project
 
 
 ## Index
@@ -38,20 +38,20 @@
 2. Include this ip on your hosts-file
 
     ```
-    127.0.0.1 {{cookiecutter.domain_prod}}.test
+    127.0.0.1 example.com.test
     ```
 
     On windows you can run this command to append it:
 
     ```
-    echo 127.0.0.1 {{cookiecutter.domain_prod}}.test >> c:\windows\System32\drivers\etc\hosts
+    echo 127.0.0.1 example.com.test >> c:\windows\System32\drivers\etc\hosts
     ```
 
 3. Add root cert: `mkcert -install` (if not already available)
 
 4. Generate ssl certs for local development
     ```
-    mkcert --cert-file docker/files/certs/cert.pem --key-file docker/files/certs/cert-key.pem {{cookiecutter.domain_prod}}.test
+    mkcert --cert-file docker/files/certs/cert.pem --key-file docker/files/certs/cert-key.pem example.com.test
     ```
 
 5. Enable SSL in Nginx
@@ -73,20 +73,20 @@
     npm i
     npm run dev
     ```
-8. Visit your site on: [https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_ssl_port}}](https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_ssl_port}})
-    - ...or login to [https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_ssl_port}}/wt/cms](https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_ssl_port}}/wt/cms) (Username: `admin` and password: `admin`)
+8. Visit your site on: [https://example.com.test:8082](https://example.com.test:8082)
+    - ...or login to [https://example.com.test:8082/wt/cms](https://example.com.test:8082/wt/cms) (Username: `admin` and password: `admin`)
 
 
 ## Where to go from here?
 
-We recommend you to check out our [Getting Started Guide](https://github.com/Frojd/Wagtail-teki/blob/main/docs/getting-started-guide.md). Otherwise, you can read up any of the following topics:
+We recommend you to check out our [Getting Started Guide](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/getting-started-guide.md). Otherwise, you can read up any of the following topics:
 
-- [Frontend Developer Guide](https://github.com/Frojd/Wagtail-teki/blob/main/docs/frontend-developer-guide.md)
-- [Backend Developer Guide](https://github.com/Frojd/Wagtail-teki/blob/main/docs/backend-developer-guide.md)
-- [Provision and configure a webserver for hosting](https://github.com/Frojd/Wagtail-teki/blob/main/docs/provisioning-servers-for-hosting.md)
-- [Setting up deployment on CircleCI](https://github.com/Frojd/Wagtail-teki/blob/main/docs/setting-up-deployment-with-circleci.md)
-- [Adding Slack notifications to CircleCI](https://github.com/Frojd/Wagtail-teki/blob/main/docs/adding-slack-notifications-to-circleci.md)
-- [Sync data between environments](https://github.com/Frojd/Wagtail-teki/blob/main/docs/sync-data-between-environments.md)
+- [Frontend Developer Guide](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/frontend-developer-guide.md)
+- [Backend Developer Guide](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/backend-developer-guide.md)
+- [Provision and configure a webserver for hosting](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/provisioning-servers-for-hosting.md)
+- [Setting up deployment on CircleCI](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/setting-up-deployment-with-circleci.md)
+- [Adding Slack notifications to CircleCI](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/adding-slack-notifications-to-circleci.md)
+- [Sync data between environments](https://github.com/Frojd/Wagtail-Teki/blob/main/docs/sync-data-between-environments.md)
 - [Running python locally](https://github.com/Frojd/Wagtail-teki/blob/main/docs/running-python-locally.md)
 - [Using static site generation](https://github.com/Frojd/Wagtail-teki/blob/main/docs/using-static-site-generation.md)
 - [Working with Wagtail's routable pages](https://github.com/Frojd/Wagtail-teki/blob/main/docs/working-with-wagtails-routable-pages.md)
@@ -123,7 +123,7 @@ We follow the [django coding style](https://docs.djangoproject.com/en/dev/intern
 This project is configured for remote debugging using VS Code with the official Python extension. Set `VS_CODE_REMOTE_DEBUG=True` in `docker/config/python.env` and restart your container to enable it.
 You should now be able to attach to the running Django server instance.
 
-[PTVSD](https://github.com/Microsoft/ptvsd) (Python Tools for Visual Studio debug server) is configured to listen for connections on port {{cookiecutter.docker_vscode_debug_port}}.
+[PTVSD](https://github.com/Microsoft/ptvsd) (Python Tools for Visual Studio debug server) is configured to listen for connections on port 5678.
 
 ### pdb in Docker
 
@@ -250,8 +250,6 @@ Want to contribute? Awesome. Just send a pull request.
 
 ## License
 
-{% if cookiecutter.software_license != 'proprietary' %}
-{{cookiecutter.project_name}} is released under the {{cookiecutter.software_license}} license.
-{% else %}
-{{cookiecutter.project_name}} is proprietary software. All rights reserved.
-{% endif %}
+
+Company-Project is proprietary software. All rights reserved.
+

@@ -4,7 +4,7 @@
 set -e
 
 readonly DB_WAIT_TIME=20  # Arbitrary timeout value for making sure the db is ready
-readonly LOCAL_DOMAIN={{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_port}}
+readonly LOCAL_DOMAIN=example.com.test:8081
 
 scripts_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 docker_dir=${scripts_dir}/../docker

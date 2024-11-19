@@ -1,4 +1,3 @@
-{% raw -%}
 version: 2.1
 
 orbs:
@@ -243,4 +242,4 @@ workflows:
           requires:
             - frontend
             - django
- {% endraw %}
+ 
