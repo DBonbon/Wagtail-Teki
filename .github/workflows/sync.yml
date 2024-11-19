@@ -30,9 +30,8 @@ jobs:
         run: |
           BRANCH_NAME="sync-changes-$(date +'%Y%m%d%H%M%S')"
           git checkout -b "$BRANCH_NAME"
-          # Stage all changes, including the .github directory
-          git add {{cookiecutter.project_name}}/ .github/workflows/sync.sh
-          # Commit the changes
+          git add {{cookiecutter.project_name}}/
+          # Commit changes only if there are any
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0

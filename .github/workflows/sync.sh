@@ -1,49 +1,24 @@
-name: Sync Company-Project to {{cookiecutter.project_name}}
+#!/bin/bash
+# sync.sh
+# Syncs changes from Company-Project to {{cookiecutter.project_name}} and confirms only actual content changes
 
-on:
-  workflow_call:
+echo "Starting sync process..."
+pwd
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
+SOURCE="Company-Project/"
+DEST="{{cookiecutter.project_name}}/"
+COOKIECUTTER_JSON="cookiecutter.json"
+EXCLUDE_PATTERNS=()
 
-    steps:
-      - uses: actions/checkout@v4
+# Read cookiecutter.json and exclude relevant paths
+for key in $(jq -r 'keys_unsorted[]' "$COOKIECUTTER_JSON"); do
+    EXCLUDE_PATTERNS+=("--exclude=*{{ cookiecutter.$key }}*")
+done
 
-      - name: Install jq (for JSON parsing)
-        run: sudo apt-get install -y jq
+# Run rsync with specified exclusions
+rsync -ac --filter='merge Company-Project/.rsync-filter' "${EXCLUDE_PATTERNS[@]}" "$SOURCE" "$DEST" > /dev/null
+echo "rsync completed."
 
-      - name: Make sync.sh executable
-        run: chmod +x .github/workflows/sync.sh
-
-      - name: Run sync script
-        run: .github/workflows/sync.sh
-
-      - name: Set up git for committing changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-      - name: Push changes to a new branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          BRANCH_NAME="sync-changes-$(date +'%Y%m%d%H%M%S')"
-          git checkout -b "$BRANCH_NAME"
-          # Stage all changes, including the .github directory
-          git add {{cookiecutter.project_name}}/ .github/
-          # Commit the changes
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-          git commit -m "Sync updates from Company-Project to {{cookiecutter.project_name}}"
-          git push origin "$BRANCH_NAME"
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: $BRANCH_NAME
-          title: "Sync updates from Company-Project to {{cookiecutter.project_name}}"
-          body: "This PR syncs changes from Company-Project to {{cookiecutter.project_name}}."
+# Log recently modified files to verify sync
+echo "Files recently modified in {{cookiecutter.project_name}}:"
+find "$DEST" -type f -printf '%T+ %p\n' | sort -r | head -20
