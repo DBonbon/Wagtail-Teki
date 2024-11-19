@@ -1,6 +1,6 @@
 #!/bin/bash
 # sync.sh
-# Syncs changes from Company-Project to {{cookiecutter.project_name}} and confirms only actual content changes
+# Syncs changes from Company-Project to {{cookiecutter.project_name}} with cookiecutter variable handling
 
 echo "Starting sync process..."
 pwd
@@ -12,12 +12,14 @@ EXCLUDE_PATTERNS=()
 
 # Read cookiecutter.json and exclude relevant paths
 for key in $(jq -r 'keys_unsorted[]' "$COOKIECUTTER_JSON"); do
-    EXCLUDE_PATTERNS+=("--exclude=*{{ cookiecutter.$key }}*")
+    value=$(jq -r ".${key}" "$COOKIECUTTER_JSON")
+    EXCLUDE_PATTERNS+=("--exclude=*$value*")
 done
 
 # Run rsync with specified exclusions
-rsync -ac --filter='merge Company-Project/.rsync-filter' "${EXCLUDE_PATTERNS[@]}" "$SOURCE" "$DEST" > /dev/null
-echo "rsync completed."
+RSYNC_CMD="rsync -ac --filter='merge Company-Project/.rsync-filter' ${EXCLUDE_PATTERNS[@]} $SOURCE $DEST"
+echo "Executing: $RSYNC_CMD"
+eval "$RSYNC_CMD"
 
 # Log recently modified files to verify sync
 echo "Files recently modified in {{cookiecutter.project_name}}:"
