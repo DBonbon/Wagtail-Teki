@@ -1,6 +1,6 @@
-# Adding sentry to Pipit
+# Adding sentry to Teki
 
-It's important to capture and track errors once your app is deployed, that is why Pipit ships with built in Sentry support, this guide explains how you activate it.
+It's important to capture and track errors once your app is deployed, that is why Teki ships with built in Sentry support, this guide explains how you activate it.
 
 ## Requirements
 
@@ -36,7 +36,7 @@ Before you get started, make sure you have the following:
 - Update `docker/config/python.env`
 - Change so Django runs in production mode
     ```
-    DJANGO_SETTINGS_MODULE=pipit.settings.prod
+    DJANGO_SETTINGS_MODULE=teki.settings.prod
     ```
 - Add your Sentry DSN: 
     ```
@@ -92,7 +92,7 @@ Before you get started, make sure you have the following:
 ### In production
 
 #### Django
-- Make sure your Django project runs using the stage (`pipit.settings.stage`) or prod (`pipit.settings.prod`) settings
+- Make sure your Django project runs using the stage (`teki.settings.stage`) or prod (`teki.settings.prod`) settings
 - Update your `.env` file and add the Sentry DSN
   ```
   SENTRY_DSN=https://public@sentry.example.com/1
@@ -116,7 +116,7 @@ Before you get started, make sure you have the following:
 - This will trigger and error and send it to sentry
 
 #### Next.js
-- When it comes to Next.js we need to define the DSN before `npm run build` runs, which is normally in our CI pipeline. Here we assume you use Circle CI as it's the default CI service for Pipit.
+- When it comes to Next.js we need to define the DSN before `npm run build` runs, which is normally in our CI pipeline. Here we assume you use Circle CI as it's the default CI service for Teki.
 - Login to Circle CI
 - Open your environment variable management in Circle CI by going to My repository / Project Settings / Environment Variables
 - Add the following Sentry details that you obtained in the beginning of this guide

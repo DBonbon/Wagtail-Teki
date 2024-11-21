@@ -18,7 +18,7 @@ services:
       - MEDIA_REMOTE_DOMAIN=example.com
 
   python:
-    image: frojd/company_project_python
+    image: dbonbon/company_project_python
     build:
       context: ./src
       args:

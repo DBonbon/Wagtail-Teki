@@ -7,5 +7,5 @@ from wagtail import hooks
 def insert_global_admin_css():
     return format_html(
         '<link rel="stylesheet" type="text/css" href="{}">',
-        static("pipit/admin-overrides.css"),
+        static("teki/admin-overrides.css"),
     )

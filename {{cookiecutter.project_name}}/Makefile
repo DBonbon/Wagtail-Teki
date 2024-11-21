@@ -21,7 +21,7 @@ translate:
 	docker-compose exec python bash -c "python manage.py makemessages -l sv_SE --ignore=venv"
 
 coverage:
-	docker-compose exec python coverage run -m pytest --ds=pipit.settings.test
+	docker-compose exec python coverage run -m pytest --ds=teki.settings.test
 	docker-compose exec python coverage html
 
 typecheck:

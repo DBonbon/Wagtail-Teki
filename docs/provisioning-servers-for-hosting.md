@@ -1,6 +1,6 @@
 # Provisioning webserver
 
-In this guide we'll explain how to use the included provisioning script to install a Pipit generated application on a server.
+In this guide we'll explain how to use the included provisioning script to install a Teki generated application on a server.
 
 
 ## Requirements (webserver, aka ansible host)
@@ -30,7 +30,7 @@ Configuration:
 
 ## Requirements (your computer, aka control node)
 
-- A fully generated Pipit project
+- A fully generated Teki project
 - Rsync installed
 - A MacOS or Linux computer ([Ansible does not support Windows](http://blog.rolpdog.com/2020/03/why-no-ansible-controller-for-windows.html))
 - Access to the webserver over ssh with both the "root" and "deploy" user

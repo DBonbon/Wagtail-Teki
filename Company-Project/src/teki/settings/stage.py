@@ -5,7 +5,7 @@ import sentry_sdk
 from sentry_sdk import configure_scope
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from pipit.settings.base import *  # NOQA
+from teki.settings.base import *  # NOQA
 
 
 DEBUG = False
@@ -74,7 +74,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # Email notification url
-WAGTAILADMIN_BASE_URL = "https://{{cookiecutter.domain_stage}}"
+WAGTAILADMIN_BASE_URL = "https://stage.example.com"
 
 # Sentry
 SENTRY_DSN = get_env("SENTRY_DSN", required=True)

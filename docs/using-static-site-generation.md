@@ -1,6 +1,6 @@
 # Using static site generation
 
-One nice feature of Next.js is that it can both be used for Server-Side Rendering (SSR) and Static Site Generation (SSG), Pipit uses SSR by default, but also supports SSG. This guide will show you how.
+One nice feature of Next.js is that it can both be used for Server-Side Rendering (SSR) and Static Site Generation (SSG), Teki uses SSR by default, but also supports SSG. This guide will show you how.
 
 
 ## Requirements

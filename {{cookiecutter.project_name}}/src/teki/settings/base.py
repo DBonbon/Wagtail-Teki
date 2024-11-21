@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "wagtail_headless_preview",
     "rest_framework",
     # Project specific apps
-    "pipit",
+    "teki",
     "sitesettings",
     "customuser",
     "customimage",
@@ -71,7 +71,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "pipit.urls"
+ROOT_URLCONF = "teki.urls"
 APPEND_SLASH = True
 
 TEMPLATES = [
@@ -95,13 +95,13 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
                 # Project specific
-                "pipit.context_processors.settings_context_processor",
+                "teki.context_processors.settings_context_processor",
             ],
         },
     }
 ]
 
-WSGI_APPLICATION = "pipit.wsgi.application"
+WSGI_APPLICATION = "teki.wsgi.application"
 
 
 # Database

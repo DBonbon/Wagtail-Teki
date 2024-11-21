@@ -10,7 +10,7 @@ from utils.env import if_exists_load_env
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pipit.settings.prod")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "teki.settings.prod")
 
     if_exists_load_env(".env")
     if not os.environ.get("IN_DOCKER", False):

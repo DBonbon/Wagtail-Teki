@@ -1,0 +1,208 @@
+[SYNC] Updating line: import os
+[SYNC] Updating line: from typing import Optional
+[SYNC] Updating line:
+[SYNC] Updating line: from utils.env import get_env, get_env_bool  # NOQA: F401
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+[SYNC] Updating line: BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+[SYNC] Updating line:
+[SYNC] Updating line: # Version, be sure to bump this with each release (please follow semver.org)
+[SYNC] Updating line: APP_VERSION = "0.1.0"
+[SYNC] Updating line:
+[SYNC] Updating line: # SECURITY WARNING: keep the secret key used in production secret!
+[SYNC] Updating line: SECRET_KEY = get_env("SECRET_KEY", required=True)
+[SYNC] Updating line:
+[SYNC] Updating line: # SECURITY WARNING: don't run with debug turned on in production!
+[SYNC] Updating line: DEBUG = False
+[SYNC] Updating line:
+[SYNC] Updating line: # This is when debug is off, else django wont allow you to visit the site
+[SYNC] Updating line: ALLOWED_HOSTS = get_env("ALLOWED_HOSTS", required=True).split(",")
+[SYNC] Updating line:
+[SYNC] Updating line: INTERNAL_IPS = ["127.0.0.1"]
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Application definition
+[SYNC] Updating line: INSTALLED_APPS = [
+[SYNC] Updating line:     "django.contrib.admin",
+[SYNC] Updating line:     "django.contrib.auth",
+[SYNC] Updating line:     "django.contrib.contenttypes",
+[SYNC] Updating line:     "django.contrib.sessions",
+[SYNC] Updating line:     "django.contrib.messages",
+[SYNC] Updating line:     "django.contrib.staticfiles",
+[SYNC] Updating line:     "django.contrib.sitemaps",
+[SYNC] Updating line:     "django.contrib.gis",
+[SYNC] Updating line:     # Third party apps
+[SYNC] Updating line:     "wagtail.embeds",
+[SYNC] Updating line:     "wagtail.sites",
+[SYNC] Updating line:     "wagtail.users",
+[SYNC] Updating line:     "wagtail.snippets",
+[SYNC] Updating line:     "wagtail.documents",
+[SYNC] Updating line:     "wagtail.images",
+[SYNC] Updating line:     "wagtail.admin",
+[SYNC] Updating line:     "wagtail.search",
+[SYNC] Updating line:     "wagtail",
+[SYNC] Updating line:     "wagtail.contrib.forms",
+[SYNC] Updating line:     "wagtail.contrib.redirects",
+[SYNC] Updating line:     "wagtail.contrib.routable_page",
+[SYNC] Updating line:     "wagtail.contrib.settings",
+[SYNC] Updating line:     "modelcluster",
+[SYNC] Updating line:     "taggit",
+[SYNC] Updating line:     "wagtail_meta_preview",
+[SYNC] Updating line:     "wagtail_headless_preview",
+[SYNC] Updating line:     "rest_framework",
+[SYNC] Updating line:     # Project specific apps
+[SYNC] Updating line:     "teki",
+[SYNC] Updating line:     "sitesettings",
+[SYNC] Updating line:     "customuser",
+[SYNC] Updating line:     "customimage",
+[SYNC] Updating line:     "customdocument",
+[SYNC] Updating line:     "main",
+[SYNC] Updating line:     "nextjs",
+[SYNC] Updating line: ]
+[SYNC] Updating line:
+[SYNC] Updating line: MIDDLEWARE = [
+[SYNC] Updating line:     "django.middleware.security.SecurityMiddleware",
+[SYNC] Updating line:     "django.contrib.sessions.middleware.SessionMiddleware",
+[SYNC] Updating line:     "django.middleware.common.CommonMiddleware",
+[SYNC] Updating line:     "django.middleware.csrf.CsrfViewMiddleware",
+[SYNC] Updating line:     "django.contrib.auth.middleware.AuthenticationMiddleware",
+[SYNC] Updating line:     "django.contrib.messages.middleware.MessageMiddleware",
+[SYNC] Updating line:     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+[SYNC] Updating line: ]
+[SYNC] Updating line:
+[SYNC] Updating line: ROOT_URLCONF = "teki.urls"
+[SYNC] Updating line: APPEND_SLASH = True
+[SYNC] Updating line:
+[SYNC] Updating line: TEMPLATES = [
+[SYNC] Updating line:     {
+[SYNC] Updating line:         "BACKEND": "django.template.backends.django.DjangoTemplates",
+[SYNC] Updating line:         "DIRS": ["templates"],
+[SYNC] Updating line:         "OPTIONS": {
+[SYNC] Updating line:             "debug": DEBUG,
+[SYNC] Updating line:             "loaders": [
+[SYNC] Updating line:                 "django.template.loaders.filesystem.Loader",
+[SYNC] Updating line:                 "django.template.loaders.app_directories.Loader",
+[SYNC] Updating line:             ],
+[SYNC] Updating line:             "context_processors": [
+[SYNC] Updating line:                 "django.template.context_processors.debug",
+[SYNC] Updating line:                 "django.template.context_processors.request",
+[SYNC] Updating line:                 "django.template.context_processors.i18n",
+[SYNC] Updating line:                 "django.template.context_processors.media",
+[SYNC] Updating line:                 "django.template.context_processors.static",
+[SYNC] Updating line:                 "django.template.context_processors.tz",
+[SYNC] Updating line:                 "django.contrib.auth.context_processors.auth",
+[SYNC] Updating line:                 "django.contrib.messages.context_processors.messages",
+[SYNC] Updating line:                 "wagtail.contrib.settings.context_processors.settings",
+[SYNC] Updating line:                 # Project specific
+[SYNC] Updating line:                 "teki.context_processors.settings_context_processor",
+[SYNC] Updating line:             ],
+[SYNC] Updating line:         },
+[SYNC] Updating line:     }
+[SYNC] Updating line: ]
+[SYNC] Updating line:
+[SYNC] Updating line: WSGI_APPLICATION = "teki.wsgi.application"
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Database
+[SYNC] Updating line: # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+[SYNC] Updating line: # Using PostgreSQL
+[SYNC] Updating line: DATABASES = {
+[SYNC] Updating line:     "default": {
+[SYNC] Updating line:         "ENGINE": "django.contrib.gis.db.backends.postgis",
+[SYNC] Updating line:         "NAME": get_env("DATABASE_NAME", required=True),
+[SYNC] Updating line:         "USER": get_env("DATABASE_USER", required=True),
+[SYNC] Updating line:         "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
+[SYNC] Updating line:         "HOST": get_env("DATABASE_HOST", required=True),
+[SYNC] Updating line:         "PORT": int(get_env("DATABASE_PORT", default="5432")),
+[SYNC] Updating line:     }
+[SYNC] Updating line: }
+[SYNC] Updating line:
+[SYNC] Updating line: # Default primary key field type
+[SYNC] Updating line: # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+[SYNC] Updating line: DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Password validation
+[SYNC] Updating line: # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+[SYNC] Updating line: AUTH_PASSWORD_VALIDATORS = [
+[SYNC] Updating line:     {
+[SYNC] Updating line:         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"  # NOQA
+[SYNC] Updating line:     },
+[SYNC] Updating line:     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},  # NOQA
+[SYNC] Updating line:     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},  # NOQA
+[SYNC] Updating line:     {
+[SYNC] Updating line:         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"  # NOQA
+[SYNC] Updating line:     },
+[SYNC] Updating line: ]
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Internationalization
+[SYNC] Updating line: # https://docs.djangoproject.com/en/5.0/topics/i18n/
+[SYNC] Updating line: TIME_ZONE = "Europe/Stockholm"
+[SYNC] Updating line: LANGUAGE_CODE = "en-us"
+[SYNC] Updating line: SITE_ID = 1
+[SYNC] Updating line: USE_I18N = True
+[SYNC] Updating line: USE_TZ = True
+[SYNC] Updating line: LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
+[SYNC] Updating line:
+[SYNC] Updating line: # Email
+[SYNC] Updating line: DEFAULT_FROM_EMAIL = get_env("DEFAULT_FROM_EMAIL", default="noreply@example.com")
+[SYNC] Updating line:
+[SYNC] Updating line: # Auth
+[SYNC] Updating line: AUTH_USER_MODEL = "customuser.User"
+[SYNC] Updating line:
+[SYNC] Updating line: # Wagtail
+[SYNC] Updating line: WAGTAIL_SITE_NAME = "Company-Project"
+[SYNC] Updating line: WAGTAILIMAGES_IMAGE_MODEL = "customimage.CustomImage"
+[SYNC] Updating line: WAGTAILDOCS_DOCUMENT_MODEL = "customdocument.CustomDocument"
+[SYNC] Updating line: WAGTAIL_ALLOW_UNICODE_SLUGS = False
+[SYNC] Updating line:
+[SYNC] Updating line: WAGTAILSEARCH_BACKENDS = {
+[SYNC] Updating line:     "default": {
+[SYNC] Updating line:         "BACKEND": "wagtail.search.backends.database",
+[SYNC] Updating line:     }
+[SYNC] Updating line: }
+[SYNC] Updating line:
+[SYNC] Updating line: WAGTAILIMAGES_FORMAT_CONVERSIONS = {
+[SYNC] Updating line:     "png": "jpeg",
+[SYNC] Updating line:     "webp": "webp",
+[SYNC] Updating line: }
+[SYNC] Updating line:
+[SYNC] Updating line: # Uploaded media
+[SYNC] Updating line: MEDIA_URL = "/wt/media/"
+[SYNC] Updating line: MEDIA_ROOT = get_env("MEDIA_PATH", required=True)
+[SYNC] Updating line:
+[SYNC] Updating line:
+[SYNC] Updating line: # Static files (CSS, JavaScript, Images)
+[SYNC] Updating line: # https://docs.djangoproject.com/en/5.0/howto/static-files/
+[SYNC] Updating line:
+[SYNC] Updating line: # Static URL to use when referring to static files located in STATIC_ROOT.
+[SYNC] Updating line: STATIC_URL = "/wt/static/"
+[SYNC] Updating line:
+[SYNC] Updating line: # The absolute path to the directory where collectstatic will collect static
+[SYNC] Updating line: # files for deployment. Example: "/var/www/example.com/static/"I
+[SYNC] Updating line: STATIC_ROOT = get_env("STATIC_PATH", required=True)
+[SYNC] Updating line:
+[SYNC] Updating line: # This setting defines the additional locations the staticfiles will traverse
+[SYNC] Updating line: STATICFILES_DIRS = (
+[SYNC] Updating line:     # "/home/special.polls.com/polls/static",
+[SYNC] Updating line:     # "/home/polls.com/polls/static",
+[SYNC] Updating line: )
+[SYNC] Updating line:
+[SYNC] Updating line: # Prevent content type sniffing
+[SYNC] Updating line: SECURE_CONTENT_TYPE_NOSNIFF = True
+[SYNC] Updating line:
+[SYNC] Updating line: # Admin
+[SYNC] Updating line: ADMIN_URL = "wt/admin/"
+[SYNC] Updating line:
+[SYNC] Updating line: # NextJS
+[SYNC] Updating line: WAGTAIL_HEADLESS_PREVIEW = {
+[SYNC] Updating line:     "CLIENT_URLS": {
+[SYNC] Updating line:         "default": "/api/preview/",
+[SYNC] Updating line:     }
+[SYNC] Updating line: }
+[SYNC] Updating line:
+[SYNC] Updating line: # Sentry
+[SYNC] Updating line: SENTRY_DSN: Optional[str] = None
+[SYNC] Updating line: SENTRY_ENVIRONMENT: Optional[str] = None

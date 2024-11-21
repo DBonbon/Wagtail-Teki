@@ -80,7 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Return seo robots as struct to prepare for Next.js metadata api (@marteinn)
 - Pass host as query param as Next.js will drop header in app router (@marteinn)
 - Change nginx docker image from alpine to latest to avoid permisson issues (@mikaelengstrom)
-- Move env utils from pipit.env_utils to namespace utils.env (@mikaelengstrom @marteinn)
+- Move env utils from teki.env_utils to namespace utils.env (@mikaelengstrom @marteinn)
 - Move if_exists_load_env to env.utils (@mikaelengstrom @marteinn)
 - Load .env file in wsgi.oy (@mikaelengstrom)
 - Use whitenoise when serving static assets on stage/prod (@mikaelengstrom @marteinn)
@@ -372,7 +372,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Upgrade Next.js to 13.1 (@marteinn)
-- Move env var retrival to pipit.env_utils (@marteinn)
+- Move env var retrival to teki.env_utils (@marteinn)
 - Make get_env default str type (@marteinn)
 
 ### Fixed

@@ -51,7 +51,7 @@ RUN chown -R app:app /home/app/web && chown -R app:app /home/app/static
 
 # Required for collectstatic
 ENV PYTHONUNBUFFERED=1 \
-    DJANGO_SETTINGS_MODULE=pipit.settings.$ENVIRONMENT \
+    DJANGO_SETTINGS_MODULE=teki.settings.$ENVIRONMENT \
     ALLOWED_HOSTS=* \
     INTERNAL_IPS=0.0.0.0 \
     SECRET_KEY=generatesecretkeyhere \

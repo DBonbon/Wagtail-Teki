@@ -1,6 +1,6 @@
 # Publish storybook
 
-Pipit includes Storybook out of the box as a development tool, but if you want to publish your Storybook to enable others to view your work in progress, follow this guide.
+Teki includes Storybook out of the box as a development tool, but if you want to publish your Storybook to enable others to view your work in progress, follow this guide.
 
 ## Requirements
 - You have performed application provisioning on both your stage and production environments by running the ansible playbook `provision.yml`

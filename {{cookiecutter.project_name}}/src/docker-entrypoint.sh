@@ -53,19 +53,19 @@ case "$CMD" in
         setup_django
 
         echo Starting using gunicorn
-        gunicorn -b 0.0.0.0:8000 -w 1 -k gevent --worker-tmp-dir /dev/shm --error-logfile - --access-logfile - --timeout 60 pipit.wsgi:application
+        gunicorn -b 0.0.0.0:8000 -w 1 -k gevent --worker-tmp-dir /dev/shm --error-logfile - --access-logfile - --timeout 60 teki.wsgi:application
         ;;
 
     "test" )
         wait_for_db
 
         echo Running tests
-        exec pytest --ds=pipit.settings.test
+        exec pytest --ds=teki.settings.test
         ;;
 
     "coverage" )
         echo Running coverage
-        exec coverage run -m  pytest --ds=pipit.settings.test
+        exec coverage run -m  pytest --ds=teki.settings.test
         ;;
 
     "typecheck" )

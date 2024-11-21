@@ -1,12 +1,12 @@
 # Adding multi language support
 
-Wagtail and Pipit assumes by default that all content comes in a single language, to add support for multiple languages you need to do the following:
+Wagtail and Teki assumes by default that all content comes in a single language, to add support for multiple languages you need to do the following:
 
 1. Install `wagtail_localize` (`pip install wagtail_localize`)
 
 2. Add `"wagtail_localize"` and `"wagtail_localize.locales"` to `INSTALLED_APPS`
 
-3. Update `src/pipit/settings/base.py` with the following:
+3. Update `src/teki/settings/base.py` with the following:
 
 ```python
 WAGTAIL_I18N_ENABLED = True
