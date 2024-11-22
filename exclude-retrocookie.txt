@@ -1,0 +1,28 @@
+# Exclude directories
+frontend/.next/
+frontend/node_modules/
+src/media/
+src/static/django_extensions/
+src/static/wagtail_localize/
+deploy/deploy_keys/
+deploy/group_vars/
+
+# Exclude compiled Python files
+src/**/__pycache__/
+src/**/*.pyc
+
+# Exclude sensitive files
+**/.env
+**/.env.local
+
+# Exclude specific templates
+src/main/templates/500.html
+src/main/templates/email/test_send.txt
+src/main/templates/partials/sentry.html
+src/pipit/templates/commands/new-page/
+
+# Exclude specific deploy files
+deploy/files/uwsgi.ini.j2
+
+# Exclude specific file types
+**/*.tpi

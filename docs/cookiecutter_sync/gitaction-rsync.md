@@ -153,6 +153,3 @@ just updated :
 
 ```
 
-
-current gaol is to:
-I want to test the retrocookie. to verify explore how feasable is this attitude. mai9nly, I wish to figure out, if this is a. quick and simple to set up and apply. I have a Company-Project, and a cookiecutter template under the same root. I have cookiecutter.json also under the root. currently the project it up and running I can push it and modify the company-project to test changes in the template. What i need here is to understand. what is the workflow, how to set it up, and time estimation to make it functional. I have never used Retrocookie. 
