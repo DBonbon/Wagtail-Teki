@@ -1,0 +1,8 @@
+Follow up notes:
+
+currently the rsync or retrocookie is not working as expected.
+
+to create, update project we can simply sync, rsync or copy paste the latest Fommes version onto the Commpnay-Project version
+
+Sync the current Fommes initial or any other version with this Wagtail-Teki and Cookiecutter version.
+
