@@ -92,10 +92,3 @@ For detailed guides, see the [`docs/`](./docs) folder:
 * [Handling CSRF Tokens](./docs/handling-csrf-tokens.md)
 
 ---
-
-This file now:
-✅ Uses proper Markdown heading and list syntax
-✅ Keeps the Mermaid diagram fenced and closed
-✅ Is ready to drop into your repo without breaking formatting
-
-Do you want me to make the **VISUAL\_DATAFLOW\.md** in this same clean Markdown style so both files are consistent?
