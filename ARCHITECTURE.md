@@ -3,7 +3,7 @@
 
 # Architecture Overview
 
-This document provides a high-level view of the **fommes.org (Wagtail-Teki)** project architecture.
+This document provides a high-level view of the **Wagtail-Teki** project architecture.
 
 ## System Overview
 
